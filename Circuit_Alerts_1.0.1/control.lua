@@ -53,7 +53,7 @@ script.on_event(defines.events.on_tick, function(event)
 	end
 end)
 
-local function create_rename_gui(player)
+local function create_rename_gui(player, message)
 	local flow = player.gui.center.add({type="flow", name="ca_rename_flow", style="flow_ca_style", direction="horizontal"})
 
 	local frame = flow.add({type="frame", direction='vertical', name='rename_frame', style="frame_ca_style"})
@@ -71,6 +71,10 @@ local function create_rename_gui(player)
 	flow3.style.left_padding = 5
 	
 	flow3.add({type="button", name="ca_rename_save", caption={"gui.save"}, style="button_ca_style"})
+
+	if(message) then
+		textbox.text = message
+	end
 end
 
 script.on_event("ca_open", function(event)
